@@ -1,3 +1,18 @@
 spring:
   application:
     name: TgBot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/tg_bot_db
+    username: root
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    enabled: false
+telegram:
+  bot:
+    commands:
+      users:
+        buttons-in-row: 4

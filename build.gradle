@@ -18,7 +18,10 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.telegram:telegrambots:6.9.7.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.flywaydb:flyway-database-postgresql:11.2.0'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
