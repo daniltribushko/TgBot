@@ -28,6 +28,7 @@ public class StartCommand implements BotCommandHandler {
         Long tgId = message.getChatId();
         userRepository.findByUsername(message.getFrom().getUserName()).ifPresent(user -> {
             user.setTgId(tgId);
+            userRepository.save(user);
             TgMessagesBotUtils.sendMessage(
                     bot,
                     SendMessage

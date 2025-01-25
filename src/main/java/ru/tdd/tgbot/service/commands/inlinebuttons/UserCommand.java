@@ -42,32 +42,33 @@ public class UserCommand implements InlineButtonCommandHandler {
                     if (user.getRole() != Role.ADMIN || current.getRole() == Role.ADMIN) {
                         List<InlineKeyboardButton> row = new ArrayList<>();
                         Integer messageId = message.getMessageId();
-                        row.add(InlineKeyboardButton.builder()
-                                .text(user.isActive() ? "Деактивировать" : "Активировать")
-                                .callbackData(
-                                        new InlineButtonCommandDTO(
-                                                InlineButtonCommand.ACTIVE,
-                                                user.getId(),
-                                                messageId
-                                        ).toJson()
-                                )
-                                .build()
-                        );
-
-                        if (user.getRole() != Role.ADMIN) {
+                        if (user.getTgId() != null) {
                             row.add(InlineKeyboardButton.builder()
-                                    .text(user.getRole() == Role.CAPITAN ?
-                                            "Удалить роль капитана" :
-                                            "Добавить роль капитана")
+                                    .text(user.isActive() ? "Деактивировать" : "Активировать")
                                     .callbackData(
                                             new InlineButtonCommandDTO(
-                                                    InlineButtonCommand.CAPITAN_ROLE,
+                                                    InlineButtonCommand.ACTIVE,
                                                     user.getId(),
                                                     messageId
                                             ).toJson()
                                     )
                                     .build()
                             );
+                            if (user.getRole() != Role.ADMIN) {
+                                row.add(InlineKeyboardButton.builder()
+                                        .text(user.getRole() == Role.CAPITAN ?
+                                                "Удалить роль капитана" :
+                                                "Добавить роль капитана")
+                                        .callbackData(
+                                                new InlineButtonCommandDTO(
+                                                        InlineButtonCommand.CAPITAN_ROLE,
+                                                        user.getId(),
+                                                        messageId
+                                                ).toJson()
+                                        )
+                                        .build()
+                                );
+                            }
                         }
 
                         row.add(InlineKeyboardButton.builder()

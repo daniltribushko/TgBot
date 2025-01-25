@@ -66,6 +66,9 @@ public class WaterBot extends TelegramLongPollingBot {
             InlineButtonCommandDTO command = InlineButtonCommandDTO.fromJson(data);
             switch (command.getCommand()) {
                 case USER -> register.getUserCommand().action(this, callbackQuery, command);
+                case ACTIVE -> register.getActiveCommand().action(this, callbackQuery, command);
+                case CAPITAN_ROLE -> register.getCapitanRoleCommand().action(this, callbackQuery, command);
+                case DELETE -> register.getDeleteCommand().action(this, callbackQuery, command);
             }
         }
     }
