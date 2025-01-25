@@ -24,6 +24,9 @@ public class User extends BaseEntity {
     @Column(nullable = false, name = "role")
     private Role role;
 
+    @Column(name = "fullname")
+    private String fullName;
+
     @ColumnDefault("false")
     @Column(name = "is_active", nullable = false)
     private boolean isActive = false;
@@ -47,8 +50,7 @@ public class User extends BaseEntity {
         private boolean isActive = false;
         private boolean isQueue = false;
         private Integer order = -1;
-
-
+        private String fullName;
 
         public Builder username(String username) {
             this.username = username;
@@ -80,6 +82,11 @@ public class User extends BaseEntity {
             return this;
         }
 
+        public Builder fullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
+
         public User build() {
             User user = new User();
 
@@ -89,6 +96,7 @@ public class User extends BaseEntity {
             user.setActive(this.isActive);
             user.setQueue(this.isQueue);
             user.setOrder(this.order);
+            user.setFullName(this.fullName);
 
             return user;
         }
@@ -140,6 +148,14 @@ public class User extends BaseEntity {
 
     public void setQueue(boolean queue) {
         isQueue = queue;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String toJson() {

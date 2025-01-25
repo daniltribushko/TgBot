@@ -51,6 +51,8 @@ public class WaterBot extends TelegramLongPollingBot {
                     case ADD_USER -> register.getAddUserCommand().action(this, update);
                     case START -> register.getStartCommand().action(this, update);
                     case USERS -> register.getUsersCommand().action(this, update);
+                    case WATER -> register.getWaterCommand().action(this, update);
+                    case INIT_WATER -> register.getInitWaterCommand().action(this, update);
                 }
             } else {
                 commandEntityRepository.findFirstByUser_TgIdOrderByIdDesc(chatId).ifPresent(commandEntity -> {

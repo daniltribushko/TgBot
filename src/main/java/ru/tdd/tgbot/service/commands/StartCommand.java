@@ -6,6 +6,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.User;
 import ru.tdd.tgbot.repositories.UserRepository;
 import ru.tdd.tgbot.utls.TgMessagesBotUtils;
 
@@ -26,8 +27,10 @@ public class StartCommand implements BotCommandHandler {
     public void action(TelegramLongPollingBot bot, Update update) {
         Message message = update.getMessage();
         Long tgId = message.getChatId();
+        User from  = message.getFrom();
         userRepository.findByUsername(message.getFrom().getUserName()).ifPresent(user -> {
             user.setTgId(tgId);
+            user.setFullName(from.getLastName() + " " + from.getFirstName());
             userRepository.save(user);
             TgMessagesBotUtils.sendMessage(
                     bot,

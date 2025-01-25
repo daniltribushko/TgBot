@@ -21,8 +21,18 @@ public enum BotCommand {
             List.of(Role.ADMIN, Role.CAPITAN)
     ),
     USERS(
-      "/users",
-      "Получить список пользователей",
+            "/users",
+            "Получить список пользователей",
+            List.of(Role.ADMIN, Role.CAPITAN)
+    ),
+    WATER(
+            "/water",
+            "Получить список водоносов",
+            List.of(Role.ADMIN, Role.CAPITAN, Role.USER)
+    ),
+    INIT_WATER(
+            "/init_water",
+            "Инициализировать очередь водоносов",
             List.of(Role.ADMIN, Role.CAPITAN)
     );
 

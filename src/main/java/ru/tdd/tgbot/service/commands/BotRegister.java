@@ -18,6 +18,8 @@ public class BotRegister {
     private final StartCommand startCommand;
     private final AddUserCommand addUserCommand;
     private final UsersCommand usersCommand;
+    private final WaterCommand waterCommand;
+    private final InitWaterCommand initWaterCommand;
 
     private final AddUserUsernameCommand addUserUsernameCommand;
 
@@ -31,6 +33,8 @@ public class BotRegister {
             StartCommand startCommand,
             AddUserCommand addUserCommand,
             UsersCommand usersCommand,
+            WaterCommand waterCommand,
+            InitWaterCommand initWaterCommand,
             AddUserUsernameCommand addUserUsernameCommand,
             UserCommand userCommand,
             ActiveCommand activeCommand,
@@ -40,7 +44,11 @@ public class BotRegister {
         this.startCommand = startCommand;
         this.addUserCommand = addUserCommand;
         this.usersCommand = usersCommand;
+        this.waterCommand = waterCommand;
+        this.initWaterCommand = initWaterCommand;
+
         this.addUserUsernameCommand = addUserUsernameCommand;
+
         this.userCommand = userCommand;
         this.activeCommand = activeCommand;
         this.capitanRoleCommand = capitanRoleCommand;
@@ -77,5 +85,13 @@ public class BotRegister {
 
     public DeleteCommand getDeleteCommand() {
         return deleteCommand;
+    }
+
+    public WaterCommand getWaterCommand() {
+        return waterCommand;
+    }
+
+    public InitWaterCommand getInitWaterCommand() {
+        return initWaterCommand;
     }
 }

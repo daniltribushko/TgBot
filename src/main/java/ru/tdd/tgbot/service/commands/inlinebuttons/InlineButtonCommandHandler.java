@@ -6,7 +6,7 @@ import ru.tdd.tgbot.models.dto.InlineButtonCommandDTO;
 
 /**
  * @author Tribushko Danil
- * @since 25.01.2024
+ * @since 25.01.2025
  * Обработчик комманд вызываемых при помощи InlineKeyboardButton
  */
 public interface InlineButtonCommandHandler {

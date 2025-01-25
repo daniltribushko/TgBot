@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.stereotype.Repository;
 import ru.tdd.tgbot.models.entities.User;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,4 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByTgId(Long tgId);
     Optional<User> findByUsername(String username);
     boolean existsByUsername(String username);
+    boolean existsByIsQueueTrue();
+    Optional<User> findFirstByIsQueueFalseAndIsActiveTrueOrderByOrder();
+    List<User> findAllByIsActiveIsTrueOrderByOrder();
 }
